@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx8upr0j8d6h3"]
+
+[ext_resource type="Texture2D" uid="uid://butk1xus5wkfw" path="res://icon.svg" id="1_06uct"]
+[ext_resource type="Script" path="res://explosives/mine/mine.gd" id="1_iklju"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g65f1"]
+size = Vector2(128, 20)
+
+[node name="Mine" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_iklju")
+gravity = 800.0
+detection_threshold = 16.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1.90735e-06)
+scale = Vector2(1, 0.15625)
+texture = ExtResource("1_06uct")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g65f1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_g65f1")

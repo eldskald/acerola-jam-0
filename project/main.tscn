@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q740d"]
 size = Vector2(128, 128)
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["level"]]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(491, 521)

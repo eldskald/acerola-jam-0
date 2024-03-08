@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmjqdo2a3s2vq"]
+
+[ext_resource type="Script" path="res://globals/globals.gd" id="1_61u7e"]
+[ext_resource type="PackedScene" uid="uid://c0a5he5ikosgq" path="res://explosion/explosion.tscn" id="2_r68vw"]
+
+[node name="Globals" type="Node"]
+script = ExtResource("1_61u7e")
+_explosion_scene = ExtResource("2_r68vw")
