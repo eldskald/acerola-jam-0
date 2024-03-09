@@ -81,10 +81,11 @@ func _throw_bombs():
 	
 	if Input.is_action_just_pressed("throw_grenade"):
 		var grenade = grenade_scene.instantiate()
-		grenade.position = position + _facing * launch_offset
+		grenade.position = position
 		if Input.is_action_pressed("look_down") and not is_on_floor():
 			grenade.velocity = grenade_throw_speed_down
 		else:
+			grenade.position += _facing * launch_offset
 			grenade.velocity.x = grenade_throw_speed_forward.x * _facing
 			grenade.velocity.y = grenade_throw_speed_forward.y
 		Globals.get_level().add_child(grenade)
