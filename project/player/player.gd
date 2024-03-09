@@ -13,13 +13,15 @@ extends CharacterBody2D
 @export_category("Explosion Movement")
 @export var vertical_launch: Vector2
 @export var forward_launch: Vector2
-@export var launch_pos_treshold: float
+@export var launch_pos_x_treshold: float
+@export var launch_pos_y_treshold: float
 @export var explosion_immunity_time: float
 
 @export_category("Bomb throwing")
-@export var bomb_throw_cooldown: float
 @export var mine_scene: PackedScene
 @export var grenade_scene: PackedScene
+@export var bomb_throw_cooldown: float
+@export var launch_offset: Vector2
 @export var mine_throw_speed: Vector2
 @export var grenade_throw_speed_forward: Vector2
 @export var grenade_throw_speed_down: Vector2
@@ -71,7 +73,7 @@ func _throw_bombs():
 	
 	if Input.is_action_just_pressed("throw_mine"):
 		var mine = mine_scene.instantiate()
-		mine.position = position
+		mine.position = position + _facing * launch_offset
 		mine.velocity.x = mine_throw_speed.x * _facing
 		mine.velocity.y = mine_throw_speed.y
 		Globals.get_level().add_child(mine)
@@ -79,7 +81,7 @@ func _throw_bombs():
 	
 	if Input.is_action_just_pressed("throw_grenade"):
 		var grenade = grenade_scene.instantiate()
-		grenade.position = position
+		grenade.position = position + _facing * launch_offset
 		if Input.is_action_pressed("look_down") and not is_on_floor():
 			grenade.velocity = grenade_throw_speed_down
 		else:
@@ -93,13 +95,13 @@ func _explode(explosion: Explosion) -> void:
 	if not _explosion_immunity_timer.is_stopped():
 		return
 	if (
-		explosion.position.y > position.y
-		and abs(explosion.position.x - position.x) > launch_pos_treshold
+		explosion.position.y > position.y + launch_pos_y_treshold
+		and abs(explosion.position.x - position.x) < launch_pos_x_treshold
 	):
-		velocity.x = forward_launch.x * sign(explosion.position.x - position.x)
-		velocity.y = forward_launch.y
-	else:
 		velocity = vertical_launch
+	else:
+		velocity.x = -forward_launch.x * sign(explosion.position.x - position.x)
+		velocity.y = forward_launch.y
 	_explosion_immunity_timer.start(explosion_immunity_time)
 
 

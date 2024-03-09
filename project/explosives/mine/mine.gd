@@ -34,6 +34,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _explode(_explosion: Explosion):
+func _explode(_explosion: Explosion) -> void:
 	Globals.spawn_explosion_at(position)
 	queue_free()

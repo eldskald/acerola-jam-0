@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://hlnkxvygwtqj"]
+[gd_scene load_steps=6 format=3 uid="uid://hlnkxvygwtqj"]
 
 [ext_resource type="Texture2D" uid="uid://butk1xus5wkfw" path="res://icon.svg" id="1_71u8c"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_c02i2"]
 [ext_resource type="PackedScene" uid="uid://bx8upr0j8d6h3" path="res://explosives/mine/mine.tscn" id="2_6hytv"]
+[ext_resource type="PackedScene" uid="uid://dbmtuy048l7f3" path="res://explosives/grenade/grenade.tscn" id="3_03kvf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jpgk"]
 size = Vector2(128, 128)
@@ -19,10 +20,13 @@ gravity = 800.0
 fall_speed = 600.0
 vertical_launch = Vector2(0, -900)
 forward_launch = Vector2(600, -600)
-launch_pos_treshold = 64.0
+launch_pos_x_treshold = 60.0
+launch_pos_y_treshold = 44.0
 explosion_immunity_time = 0.5
-bomb_throw_cooldown = 0.5
 mine_scene = ExtResource("2_6hytv")
+grenade_scene = ExtResource("3_03kvf")
+bomb_throw_cooldown = 0.5
+launch_offset = Vector2(64, 0)
 mine_throw_speed = Vector2(300, -300)
 grenade_throw_speed_forward = Vector2(400, -400)
 grenade_throw_speed_down = Vector2(0, 400)
