@@ -9,7 +9,7 @@ size = Vector2(128, 128)
 [node name="Main" type="Node2D" groups=["level"]]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(487, 569)
+position = Vector2(498, 330)
 scale = Vector2(8.70445, 0.835728)
 collision_layer = 2
 collision_mask = 0
@@ -22,7 +22,7 @@ texture = ExtResource("1_yvagu")
 shape = SubResource("RectangleShape2D_q740d")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(494, -16)
+position = Vector2(488, -47)
 scale = Vector2(8.70445, 0.835728)
 collision_layer = 2
 collision_mask = 0
@@ -35,7 +35,7 @@ texture = ExtResource("1_yvagu")
 shape = SubResource("RectangleShape2D_q740d")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(995, 292)
+position = Vector2(531, 253)
 scale = Vector2(0.532176, 4.60469)
 collision_layer = 2
 collision_mask = 0
@@ -48,7 +48,7 @@ texture = ExtResource("1_yvagu")
 shape = SubResource("RectangleShape2D_q740d")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(15.0001, 285)
+position = Vector2(-22, 285)
 scale = Vector2(0.532176, 4.60469)
 collision_layer = 2
 collision_mask = 0
@@ -61,4 +61,4 @@ texture = ExtResource("1_yvagu")
 shape = SubResource("RectangleShape2D_q740d")
 
 [node name="Player" parent="." instance=ExtResource("2_jswne")]
-position = Vector2(199, 448)
+position = Vector2(78, 231)

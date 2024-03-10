@@ -1,6 +1,10 @@
 class_name Player
 extends CharacterBody2D
 
+signal state_changed(new_state: State)
+
+enum State { STANDING, MOVING, AIRBORNE, EXPLODED, DEAD }
+
 @export_category("Basic Movement")
 @export var speed: float
 @export var acceleration: float
@@ -30,11 +34,26 @@ extends CharacterBody2D
 @onready var _explosion_immunity_timer: Timer = $ExplosionImmunityTimer
 
 var _facing: float = 1.0
+var _state: State = State.STANDING
 
 
 func _physics_process(delta) -> void:
 	_move(delta)
 	_throw_bombs()
+
+
+func get_facing() -> float:
+	return _facing
+
+
+func get_state() -> State:
+	return _state
+
+
+func _set_state(new_state: State) -> void:
+	if new_state != _state:
+		state_changed.emit(new_state)
+		_state = new_state
 
 
 func _move(delta) -> void:
@@ -65,6 +84,14 @@ func _move(delta) -> void:
 	velocity.y = clampf(velocity.y + gravity * delta, -INF, fall_speed)
 	
 	move_and_slide()
+	
+	# Move states
+	if is_on_floor() and abs(velocity.x) <= 0.1:
+		_set_state(State.STANDING)
+	elif is_on_floor():
+		_set_state(State.MOVING)
+	elif not is_on_floor() and _state != State.EXPLODED:
+		_set_state(State.AIRBORNE)
 
 
 func _throw_bombs():
@@ -78,6 +105,8 @@ func _throw_bombs():
 		mine.velocity.y = mine_throw_speed.y
 		Globals.get_level().add_child(mine)
 		_bomb_throw_cooldown_timer.start(bomb_throw_cooldown)
+		if _state == State.EXPLODED:
+			_set_state(State.AIRBORNE)
 	
 	if Input.is_action_just_pressed("throw_grenade"):
 		var grenade = grenade_scene.instantiate()
@@ -90,6 +119,8 @@ func _throw_bombs():
 			grenade.velocity.y = grenade_throw_speed_forward.y
 		Globals.get_level().add_child(grenade)
 		_bomb_throw_cooldown_timer.start(bomb_throw_cooldown)
+		if _state == State.EXPLODED:
+			_set_state(State.AIRBORNE)
 
 
 func _explode(explosion: Explosion) -> void:
@@ -104,6 +135,7 @@ func _explode(explosion: Explosion) -> void:
 		velocity.x = -forward_launch.x * sign(explosion.position.x - position.x)
 		velocity.y = forward_launch.y
 	_explosion_immunity_timer.start(explosion_immunity_time)
+	_set_state(State.EXPLODED)
 
 
 func _get_input_dir() -> float:
