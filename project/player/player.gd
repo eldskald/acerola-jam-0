@@ -17,8 +17,7 @@ enum State { STANDING, MOVING, AIRBORNE, EXPLODED, DEAD }
 @export_category("Explosion Movement")
 @export var vertical_launch: Vector2
 @export var forward_launch: Vector2
-@export var launch_pos_x_treshold: float
-@export var launch_pos_y_treshold: float
+@export var launch_dir_pos_x_treshold: float
 @export var explosion_immunity_time: float
 
 @export_category("Bomb throwing")
@@ -126,13 +125,13 @@ func _throw_bombs():
 func _explode(explosion: Explosion) -> void:
 	if not _explosion_immunity_timer.is_stopped():
 		return
-	if (
-		explosion.position.y > position.y + launch_pos_y_treshold
-		and abs(explosion.position.x - position.x) < launch_pos_x_treshold
-	):
+	if abs(explosion.position.x - position.x) < launch_dir_pos_x_treshold:
 		velocity = vertical_launch
 	else:
-		velocity.x = -forward_launch.x * sign(explosion.position.x - position.x)
+		if explosion.position.x - position.x <= 0.1:
+			velocity.x = forward_launch.x * (-_facing)
+		else:
+			velocity.x = -forward_launch.x * sign(explosion.position.x - position.x)
 		velocity.y = forward_launch.y
 	_explosion_immunity_timer.start(explosion_immunity_time)
 	_set_state(State.EXPLODED)

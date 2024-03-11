@@ -17,11 +17,9 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 6
 particles_anim_loop = true
 
-[sub_resource type="Animation" id="Animation_6xvri"]
-resource_name = "standing"
-length = 9.0
-loop_mode = 1
-step = 0.25
+[sub_resource type="Animation" id="Animation_3ir3n"]
+resource_name = "airborne"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,10 +27,56 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.25, 3, 3.25, 3.5, 3.75, 5, 5.25, 6, 7, 7.25, 7.5, 7.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 2, 3, 2, 3, 2]
+"values": [4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"_set_bottom_particles"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"_set_top_particles"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_15khn"]
+resource_name = "dead"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 10, 9]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -58,27 +102,27 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [true],
+"args": [false],
 "method": &"_set_top_particles"
 }]
 }
 
-[sub_resource type="Animation" id="Animation_15khn"]
-resource_name = "dead"
-length = 0.6
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
+[sub_resource type="Animation" id="Animation_tnb2f"]
+resource_name = "exploded"
+length = 0.1
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [8, 9, 10, 11, 10, 9]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_get_random_exploded_frame"
+}]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -153,9 +197,11 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_3ir3n"]
-resource_name = "airborne"
-length = 0.1
+[sub_resource type="Animation" id="Animation_6xvri"]
+resource_name = "standing"
+length = 9.0
+loop_mode = 1
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -163,10 +209,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 1.25, 3, 3.25, 3.5, 3.75, 5, 5.25, 6, 7, 7.25, 7.5, 7.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [4]
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 2, 3, 2, 3, 2]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -175,70 +221,24 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"_set_bottom_particles"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [true],
-"method": &"_set_bottom_particles"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [false],
-"method": &"_set_top_particles"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_tnb2f"]
-resource_name = "exploded"
-length = 0.1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_get_random_exploded_frame"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [false],
-"method": &"_set_bottom_particles"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [false],
 "method": &"_set_top_particles"
 }]
 }
@@ -267,8 +267,7 @@ gravity = 800.0
 fall_speed = 300.0
 vertical_launch = Vector2(0, -400)
 forward_launch = Vector2(300, -300)
-launch_pos_x_treshold = 8.0
-launch_pos_y_treshold = 8.0
+launch_dir_pos_x_treshold = 4.0
 explosion_immunity_time = 0.5
 mine_scene = ExtResource("2_6hytv")
 grenade_scene = ExtResource("3_03kvf")

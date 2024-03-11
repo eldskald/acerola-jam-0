@@ -23,8 +23,8 @@ func _physics_process(delta: float) -> void:
 		_anim.speed_scale = sign(velocity.x)
 	
 	# Move
-	var old_velocity := velocity
 	velocity.y += gravity * delta
+	var old_velocity := velocity
 	move_and_slide()
 	
 	# We need to keep track of the velocity before move_and_slide() because
