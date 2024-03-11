@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://dml3llbnqb5fy"]
+[gd_scene load_steps=3 format=3 uid="uid://dml3llbnqb5fy"]
 
-[ext_resource type="Texture2D" uid="uid://butk1xus5wkfw" path="res://icon.svg" id="1_yvagu"]
 [ext_resource type="PackedScene" uid="uid://hlnkxvygwtqj" path="res://player/player.tscn" id="2_jswne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q740d"]
@@ -15,9 +14,6 @@ collision_layer = 2
 collision_mask = 0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_yvagu")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_q740d")
 
@@ -27,9 +23,6 @@ scale = Vector2(8.70445, 0.835728)
 collision_layer = 2
 collision_mask = 0
 metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
-texture = ExtResource("1_yvagu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 shape = SubResource("RectangleShape2D_q740d")
@@ -41,9 +34,6 @@ collision_layer = 2
 collision_mask = 0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
-texture = ExtResource("1_yvagu")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource("RectangleShape2D_q740d")
 
@@ -53,9 +43,6 @@ scale = Vector2(0.532176, 4.60469)
 collision_layer = 2
 collision_mask = 0
 metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
-texture = ExtResource("1_yvagu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 shape = SubResource("RectangleShape2D_q740d")
