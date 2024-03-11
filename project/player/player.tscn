@@ -1,19 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://hlnkxvygwtqj"]
+[gd_scene load_steps=19 format=3 uid="uid://hlnkxvygwtqj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_c02i2"]
 [ext_resource type="PackedScene" uid="uid://bx8upr0j8d6h3" path="res://explosives/mine/mine.tscn" id="2_6hytv"]
 [ext_resource type="PackedScene" uid="uid://dbmtuy048l7f3" path="res://explosives/grenade/grenade.tscn" id="3_03kvf"]
 [ext_resource type="Texture2D" uid="uid://p0yylvbigjgi" path="res://assets/textures/smoke-particles-1.png" id="4_8ld1v"]
-[ext_resource type="Texture2D" uid="uid://bnhsmrcvqcet4" path="res://assets/textures/spritesheet.png" id="4_g5llr"]
+[ext_resource type="Texture2D" uid="uid://dypi6vwkf5v3b" path="res://assets/textures/player.png" id="4_uosth"]
 [ext_resource type="Script" path="res://player/player-sprite.gd" id="4_wceq6"]
 [ext_resource type="Material" uid="uid://bbdfb3kw3cp63" path="res://player/top-particles.tres" id="6_bcnbf"]
 [ext_resource type="Texture2D" uid="uid://dm68m6oo7tto2" path="res://assets/textures/smoke-particles-2.png" id="6_pxc5g"]
 [ext_resource type="Texture2D" uid="uid://crfhnoirau7k5" path="res://assets/textures/smoke-particles-3.png" id="7_pko4e"]
 [ext_resource type="Material" uid="uid://c6ficavtluadt" path="res://player/bot-particles.tres" id="10_vv2pp"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p7106"]
-atlas = ExtResource("4_g5llr")
-region = Rect2(160, 0, 96, 72)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l2r6x"]
 particles_animation = true
@@ -269,24 +265,24 @@ friction = 600.0
 air_friction = 400.0
 gravity = 800.0
 fall_speed = 300.0
-vertical_launch = Vector2(0, -900)
-forward_launch = Vector2(600, -600)
-launch_pos_x_treshold = 60.0
-launch_pos_y_treshold = 44.0
+vertical_launch = Vector2(0, -400)
+forward_launch = Vector2(300, -300)
+launch_pos_x_treshold = 8.0
+launch_pos_y_treshold = 8.0
 explosion_immunity_time = 0.5
 mine_scene = ExtResource("2_6hytv")
 grenade_scene = ExtResource("3_03kvf")
 bomb_throw_cooldown = 0.5
-launch_offset = Vector2(64, 0)
-mine_throw_speed = Vector2(300, -300)
-grenade_throw_speed_forward = Vector2(400, -400)
-grenade_throw_speed_down = Vector2(0, 400)
+launch_offset = Vector2(8, 0)
+mine_throw_speed = Vector2(120, -120)
+grenade_throw_speed_forward = Vector2(225, -225)
+grenade_throw_speed_down = Vector2(0, 225)
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = SubResource("AtlasTexture_p7106")
+texture = ExtResource("4_uosth")
 hframes = 4
 vframes = 3
+region_rect = Rect2(160, 0, 96, 72)
 script = ExtResource("4_wceq6")
 
 [node name="TopParticles" type="Node2D" parent="PlayerSprite"]
@@ -371,7 +367,6 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_5jpgk")
 

@@ -7,6 +7,11 @@ extends CharacterBody2D
 @export var detection_threshold: float
 
 @onready var _area: Area2D = $Area2D
+@onready var _sprite: Sprite2D = $Sprite2D
+
+
+func _ready() -> void:
+	_sprite.frame = randi() % 4
 
 
 func _physics_process(delta: float) -> void:

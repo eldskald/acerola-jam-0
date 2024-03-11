@@ -1,22 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx8upr0j8d6h3"]
+[gd_scene load_steps=5 format=3 uid="uid://bx8upr0j8d6h3"]
 
-[ext_resource type="Texture2D" uid="uid://butk1xus5wkfw" path="res://icon.svg" id="1_06uct"]
 [ext_resource type="Script" path="res://explosives/mine/mine.gd" id="1_iklju"]
+[ext_resource type="Texture2D" uid="uid://bjq0l828phard" path="res://assets/textures/explosive-2.png" id="2_py0x5"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t8gqp"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 50, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g65f1"]
-size = Vector2(128, 20)
+size = Vector2(12, 4)
 
 [node name="Mine" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_iklju")
 gravity = 800.0
-detection_threshold = 16.0
+detection_threshold = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -1.90735e-06)
-scale = Vector2(1, 0.15625)
-texture = ExtResource("1_06uct")
+position = Vector2(0, -6)
+texture = ExtResource("2_py0x5")
+hframes = 2
+vframes = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+modulate = Color(1, 0.784314, 0.341176, 1)
+show_behind_parent = true
+position = Vector2(0, 4)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_t8gqp")
+lifetime = 0.5
+fixed_fps = 60
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g65f1")

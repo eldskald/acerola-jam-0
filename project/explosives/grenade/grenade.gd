@@ -3,11 +3,24 @@ extends CharacterBody2D
 @export var gravity: float
 @export var max_bounces: int
 
-@onready var _area := $Area2D
+@onready var _area: Area2D = $Area2D
+@onready var _sprite: Sprite2D = $Sprite2D
+@onready var _anim: AnimationPlayer = $AnimationPlayer
 
 var _bounces: int = 0
 
+
+func _ready():
+	_sprite.frame = randi() % 4
+	_anim.play("roll")
+
 func _physics_process(delta: float) -> void:
+	if abs(velocity.x) <= 0.1:
+		_sprite.flip_h = false
+		_anim.speed_scale = 1.0
+	else:
+		_sprite.flip_h = sign(velocity.x) < 0.0
+		_anim.speed_scale = sign(velocity.x)
 	
 	# Move
 	var old_velocity := velocity
