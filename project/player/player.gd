@@ -49,6 +49,10 @@ func get_state() -> State:
 	return _state
 
 
+func kill() -> void:
+	print("you died")
+
+
 func _set_state(new_state: State) -> void:
 	if new_state != _state:
 		state_changed.emit(new_state)

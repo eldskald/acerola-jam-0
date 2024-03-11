@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://4f1upelpcf60"]
+
+[ext_resource type="Texture2D" uid="uid://cp4nqn0f2dppk" path="res://assets/textures/enemies.png" id="1_fg8wd"]
+[ext_resource type="Script" path="res://enemies/grounded/enemy_grounded.gd" id="1_qqggr"]
+
+[sub_resource type="Animation" id="Animation_c82ba"]
+resource_name = "moving"
+length = 0.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_xlrwu"]
+resource_name = "dead"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5im3p"]
+_data = {
+"dead": SubResource("Animation_xlrwu"),
+"moving": SubResource("Animation_c82ba")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsmo5"]
+size = Vector2(10, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ji05h"]
+size = Vector2(17, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gstnf"]
+size = Vector2(1, 1)
+
+[node name="EnemyGrounded" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_qqggr")
+speed = 60.0
+gravity = 800.0
+explosion_launch = Vector2(400, -400)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_5im3p")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_fg8wd")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_wsmo5")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(2.5, 1)
+shape = SubResource("RectangleShape2D_ji05h")
+
+[node name="EdgeDetectorLeft" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-7, 12)
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeDetectorLeft"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_gstnf")
+
+[node name="EdgeDetectorRight" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(4, 12)
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeDetectorRight"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_gstnf")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

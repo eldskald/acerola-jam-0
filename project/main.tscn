@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dml3llbnqb5fy"]
+[gd_scene load_steps=4 format=3 uid="uid://dml3llbnqb5fy"]
 
 [ext_resource type="PackedScene" uid="uid://hlnkxvygwtqj" path="res://player/player.tscn" id="2_jswne"]
+[ext_resource type="PackedScene" uid="uid://4f1upelpcf60" path="res://enemies/grounded/enemy_grounded.tscn" id="2_umkfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q740d"]
 size = Vector2(128, 128)
@@ -8,7 +9,7 @@ size = Vector2(128, 128)
 [node name="Main" type="Node2D" groups=["level"]]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(498, 330)
+position = Vector2(498, 330.5)
 scale = Vector2(8.70445, 0.835728)
 collision_layer = 2
 collision_mask = 0
@@ -47,5 +48,20 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 shape = SubResource("RectangleShape2D_q740d")
 
+[node name="StaticBody2D5" type="StaticBody2D" parent="."]
+position = Vector2(257, 277)
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+shape = SubResource("RectangleShape2D_q740d")
+
 [node name="Player" parent="." instance=ExtResource("2_jswne")]
-position = Vector2(78, 231)
+position = Vector2(26, 265)
+
+[node name="EnemyGrounded" parent="." instance=ExtResource("2_umkfx")]
+position = Vector2(256, 201)
+
+[node name="EnemyGrounded2" parent="." instance=ExtResource("2_umkfx")]
+position = Vector2(408, 265)
