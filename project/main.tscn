@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dml3llbnqb5fy"]
+[gd_scene load_steps=7 format=3 uid="uid://dml3llbnqb5fy"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_j7adu"]
 [ext_resource type="PackedScene" uid="uid://euxpp4w11b5b" path="res://tilesets/walls.tscn" id="2_ckrma"]
 [ext_resource type="PackedScene" uid="uid://hlnkxvygwtqj" path="res://player/player.tscn" id="2_jswne"]
 [ext_resource type="PackedScene" uid="uid://4f1upelpcf60" path="res://enemies/grounded/enemy_grounded.tscn" id="2_umkfx"]
 [ext_resource type="PackedScene" uid="uid://b2ums55ohaj2y" path="res://tilesets/platforms.tscn" id="3_re0oa"]
+[ext_resource type="PackedScene" uid="uid://bl62jqik0nv1n" path="res://enemies/flying/enemy_flying.tscn" id="6_3jdns"]
 
 [node name="Main" type="Node2D" groups=["level"]]
 script = ExtResource("1_j7adu")
@@ -27,3 +28,6 @@ position = Vector2(231, 196)
 
 [node name="EnemyGrounded2" parent="." instance=ExtResource("2_umkfx")]
 position = Vector2(410, 260)
+
+[node name="EnemyFlying" parent="." instance=ExtResource("6_3jdns")]
+position = Vector2(405, 104)

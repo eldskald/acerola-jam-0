@@ -18,6 +18,10 @@ func get_level():
 	return get_tree().get_nodes_in_group("level")[0]
 
 
+func get_player():
+	return get_tree().get_nodes_in_group("player")[0]
+
+
 func spawn_explosion_at(point: Vector2):
 	var explosion = _explosion_scene.instantiate()
 	explosion.position = point

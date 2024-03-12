@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://bl62jqik0nv1n"]
+
+[ext_resource type="Script" path="res://enemies/flying/enemy_flying.gd" id="1_niej3"]
+[ext_resource type="Texture2D" uid="uid://cp4nqn0f2dppk" path="res://assets/textures/enemies.png" id="1_sc3ka"]
+
+[sub_resource type="Animation" id="Animation_yh6fu"]
+resource_name = "flying"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ajllm"]
+resource_name = "dead"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_amedm"]
+_data = {
+"dead": SubResource("Animation_ajllm"),
+"flying": SubResource("Animation_yh6fu")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p8hw"]
+size = Vector2(18, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hiu4o"]
+size = Vector2(23, 21)
+
+[node name="EnemyFlying" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_niej3")
+amplitude = 32.0
+period = 4.0
+explosion_launch = Vector2(400, -400)
+gravity = 800.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_amedm")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_sc3ka")
+hframes = 5
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1.5)
+shape = SubResource("RectangleShape2D_1p8hw")
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_hiu4o")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
