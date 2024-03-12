@@ -31,6 +31,7 @@ enum State { STANDING, MOVING, AIRBORNE, EXPLODED, DEAD }
 
 @onready var _bomb_throw_cooldown_timer: Timer = $BombThrowCooldown
 @onready var _explosion_immunity_timer: Timer = $ExplosionImmunityTimer
+@onready var _platform_drop_timer: Timer = $PlatformDropTimer
 
 var _facing: float = 1.0
 var _state: State = State.STANDING
@@ -85,6 +86,9 @@ func _move(delta) -> void:
 	
 	# Vertical movement
 	velocity.y = clampf(velocity.y + gravity * delta, -INF, fall_speed)
+	if Input.is_action_just_pressed("look_down"):
+		_platform_drop_timer.start()
+		set_collision_mask_value(5, false)
 	
 	move_and_slide()
 	
@@ -160,3 +164,7 @@ func _get_friction() -> float:
 		return friction
 	else:
 		return air_friction
+
+
+func _on_platform_drop_timeout():
+	set_collision_mask_value(5, true)

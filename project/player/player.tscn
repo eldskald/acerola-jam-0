@@ -256,7 +256,7 @@ _data = {
 size = Vector2(16, 22)
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 2
+collision_mask = 18
 script = ExtResource("1_c02i2")
 speed = 100.0
 acceleration = 400.0
@@ -375,4 +375,9 @@ one_shot = true
 [node name="ExplosionImmunityTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="PlatformDropTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="state_changed" from="." to="PlayerSprite" method="_on_player_state_changed"]
+[connection signal="timeout" from="PlatformDropTimer" to="." method="_on_platform_drop_timeout"]
