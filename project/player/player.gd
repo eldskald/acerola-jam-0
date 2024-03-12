@@ -166,5 +166,9 @@ func _get_friction() -> float:
 		return air_friction
 
 
-func _on_platform_drop_timeout():
+func _on_platform_drop_timeout() -> void:
 	set_collision_mask_value(5, true)
+
+
+func _on_spike_detector_body_entered(_body) -> void:
+	kill()

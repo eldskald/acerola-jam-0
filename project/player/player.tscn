@@ -369,6 +369,14 @@ libraries = {
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_5jpgk")
 
+[node name="SpikeDetector" type="Area2D" parent="."]
+position = Vector2(0, 1)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeDetector"]
+shape = SubResource("RectangleShape2D_5jpgk")
+
 [node name="BombThrowCooldown" type="Timer" parent="."]
 one_shot = true
 
@@ -380,4 +388,5 @@ wait_time = 0.2
 one_shot = true
 
 [connection signal="state_changed" from="." to="PlayerSprite" method="_on_player_state_changed"]
+[connection signal="body_entered" from="SpikeDetector" to="." method="_on_spike_detector_body_entered"]
 [connection signal="timeout" from="PlatformDropTimer" to="." method="_on_platform_drop_timeout"]
