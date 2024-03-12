@@ -25,16 +25,20 @@ func _physics_process(delta: float) -> void:
 	# Move
 	velocity.y += gravity * delta
 	var old_velocity := velocity
+	var old_position := position
 	move_and_slide()
 	
-	# We need to keep track of the velocity before move_and_slide() because
-	# on a collision, the component that should get bounced will be zero.
+	# We need to keep track of the velocity and position before move_and_slide()
+	# because on a collision, the velocity's component that should get bounced
+	# will be zero and the position will be different so the maximum height will
+	# change, so we need to restore it to how it was but with velocity bounced.
 	
 	# Bounce
 	var bounced := false
 	if is_on_floor() or is_on_ceiling():
 		bounced = true
 		velocity.y = -old_velocity.y
+		position.y = old_position.y
 	if is_on_wall():
 		bounced = true
 		velocity.x = -old_velocity.x
