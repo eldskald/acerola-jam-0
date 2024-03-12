@@ -27,7 +27,7 @@ func _ready():
 func _physics_process(delta):
 	if not _is_dead:
 		if (
-			is_on_wall()
+			(is_on_wall() and get_wall_normal().x * velocity.x <= 0.0)
 			or _left_edge_detector.get_overlapping_bodies().is_empty()
 			or _right_edge_detector.get_overlapping_bodies().is_empty()
 		):
