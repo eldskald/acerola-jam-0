@@ -52,6 +52,7 @@ func _explode(explosion: Explosion):
 	_facing = sign(velocity.x)
 	_is_dead = true
 	_hurtbox.monitoring = false
+	set_collision_mask_value(4, false)
 	_anim.play("dead")
 
 
