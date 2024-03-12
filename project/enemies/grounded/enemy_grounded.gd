@@ -1,12 +1,16 @@
 class_name EnemyGrounded
 extends CharacterBody2D
 
+enum Facing { LEFT, RIGHT }
+
+@export var initial_facing: Facing
 @export var speed: float
 @export var gravity: float
 @export var explosion_launch: Vector2
 
 @onready var _anim: AnimationPlayer = $"%AnimationPlayer"
 @onready var _sprite: Sprite2D = $"%Sprite2D"
+@onready var _hurtbox: Area2D = $"%HurtBox"
 @onready var _left_edge_detector: Area2D = $"%EdgeDetectorLeft"
 @onready var _right_edge_detector: Area2D = $"%EdgeDetectorRight"
 
@@ -16,7 +20,8 @@ var _facing: float = 1.0
 
 func _ready():
 	_anim.play("moving")
-	velocity = Vector2(speed, 0.0)
+	_facing = 1.0 if initial_facing == Facing.RIGHT else -1.0
+	velocity = Vector2(speed * _facing, 0.0)
 
 
 func _physics_process(delta):
@@ -46,6 +51,7 @@ func _explode(explosion: Explosion):
 	velocity.y = explosion_launch.y
 	_facing = sign(velocity.x)
 	_is_dead = true
+	_hurtbox.monitoring = false
 	_anim.play("dead")
 
 

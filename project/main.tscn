@@ -61,7 +61,11 @@ shape = SubResource("RectangleShape2D_q740d")
 position = Vector2(26, 265)
 
 [node name="EnemyGrounded" parent="." instance=ExtResource("2_umkfx")]
-position = Vector2(256, 201)
+position = Vector2(280, 201)
+initial_facing = 1
+
+[node name="EnemyGrounded3" parent="." instance=ExtResource("2_umkfx")]
+position = Vector2(230, 201)
 
 [node name="EnemyGrounded2" parent="." instance=ExtResource("2_umkfx")]
 position = Vector2(408, 265)
