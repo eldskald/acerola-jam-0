@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcswny36jmbk3"]
+[gd_scene load_steps=8 format=3 uid="uid://dcswny36jmbk3"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_ay1xb"]
 [ext_resource type="PackedScene" uid="uid://dq2wv2ouvx8vb" path="res://tilesets/background.tscn" id="2_ihsxt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://crk5edixx2n5b" path="res://tilesets/spikes.tscn" id="4_sdnk4"]
 [ext_resource type="PackedScene" uid="uid://euxpp4w11b5b" path="res://tilesets/walls.tscn" id="5_cccm0"]
 [ext_resource type="PackedScene" uid="uid://hlnkxvygwtqj" path="res://player/player.tscn" id="6_npeig"]
+[ext_resource type="PackedScene" uid="uid://ipaun8yw70ur" path="res://goals/stash/stash.tscn" id="6_s878p"]
 
 [node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1_ay1xb")
@@ -26,6 +27,8 @@ editor_draw_limits = true
 [node name="Spikes" parent="." instance=ExtResource("4_sdnk4")]
 
 [node name="Walls" parent="." instance=ExtResource("5_cccm0")]
+
+[node name="Stash" parent="." instance=ExtResource("6_s878p")]
 
 [node name="Player" parent="." instance=ExtResource("6_npeig")]
 position = Vector2(71, 107)

@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://ipaun8yw70ur"]
+
+[ext_resource type="Texture2D" uid="uid://c38555gl61np6" path="res://assets/textures/objectives.png" id="1_pq1kl"]
+[ext_resource type="Script" path="res://goals/stash/stash.gd" id="2_5vgjk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yvpyv"]
+texture = ExtResource("1_pq1kl")
+5:0/next_alternative_id = 2
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 8, -4, 8, 8, -8, 8)
+5:0/1 = 1
+5:0/1/texture_origin = Vector2i(8, 0)
+5:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/1/physics_layer_0/angular_velocity = 0.0
+5:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, 0, -4, -16, -4, -16, 8)
+6:0/next_alternative_id = 2
+6:0/0 = 0
+6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:0/0/physics_layer_0/angular_velocity = 0.0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, -4, 8, 4, 8, 4, -8)
+6:0/1 = 1
+6:0/1/texture_origin = Vector2i(8, 0)
+6:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:0/1/physics_layer_0/angular_velocity = 0.0
+6:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, -4, 8, -12, 8, -12, -8)
+7:0/next_alternative_id = 2
+7:0/0 = 0
+7:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:0/0/physics_layer_0/angular_velocity = 0.0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+7:0/1 = 1
+7:0/1/texture_origin = Vector2i(8, 0)
+7:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:0/1/physics_layer_0/angular_velocity = 0.0
+7:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -8, 0, -8, 0, 8, -16, 8)
+4:1/next_alternative_id = 2
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, -8, 8, 8, 8, 8, -4)
+4:1/1 = 1
+4:1/1/texture_origin = Vector2i(8, 0)
+4:1/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/1/physics_layer_0/angular_velocity = 0.0
+4:1/1/physics_layer_0/polygon_0/points = PackedVector2Array(0, -4, 0, 8, -16, 8, -16, -4)
+5:1/next_alternative_id = 2
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, -4, -8, -4, -8, 8)
+5:1/1 = 1
+5:1/1/texture_origin = Vector2i(8, 0)
+5:1/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/1/physics_layer_0/angular_velocity = 0.0
+5:1/1/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, 0, -4, -16, -4, -16, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:1/0/physics_layer_0/angular_velocity = 0.0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, -4, 8, -4, 8, -8)
+7:1/0 = 0
+7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:1/0/physics_layer_0/angular_velocity = 0.0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[sub_resource type="TileSet" id="TileSet_40ovd"]
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_yvpyv")
+
+[node name="Stash" type="TileMap"]
+tile_set = SubResource("TileSet_40ovd")
+format = 2
+layer_0/name = "layer_1"
+layer_1/name = "layer_2"
+layer_1/tile_data = PackedInt32Array()
+script = ExtResource("2_5vgjk")

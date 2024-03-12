@@ -41,8 +41,5 @@ func next_level() -> void:
 		)
 
 
-func save_obtained_stash() -> bool:
-	if not _stashes[_current_level]:
-		_stashes[_current_level] = true
-		return true
-	return false
+func save_obtained_stash() -> void:
+	_stashes[_current_level] = true
