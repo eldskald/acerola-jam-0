@@ -48,6 +48,8 @@ func _physics_process(delta: float) -> void:
 		_bounces += 1
 		if _bounces == max_bounces:
 			_explode(null)
+		else:
+			Globals.play_bounce_sound()
 	
 	# Explode through contact
 	for body in _area.get_overlapping_bodies():

@@ -24,6 +24,7 @@ func _ready() -> void:
 func _physics_process(_delta) -> void:
 	if Input.is_anything_pressed() and _timer.is_stopped():
 		Globals.go_to_level(_to_level)
+		Globals.play_select_sound()
 
 
 func _load_data(data: Dictionary) -> void:

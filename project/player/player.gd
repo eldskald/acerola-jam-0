@@ -127,6 +127,7 @@ func _throw_bombs():
 		_bomb_throw_cooldown_timer.start(bomb_throw_cooldown)
 		if _state == State.EXPLODED:
 			_set_state(State.AIRBORNE)
+		Globals.play_random_throw_sound()
 	
 	if Input.is_action_just_pressed("throw_grenade"):
 		var grenade = grenade_scene.instantiate()
@@ -141,6 +142,7 @@ func _throw_bombs():
 		_bomb_throw_cooldown_timer.start(bomb_throw_cooldown)
 		if _state == State.EXPLODED:
 			_set_state(State.AIRBORNE)
+		Globals.play_random_throw_sound()
 
 
 func _explode(explosion: Explosion) -> void:
