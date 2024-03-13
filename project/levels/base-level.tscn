@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://euxpp4w11b5b" path="res://tilesets/walls.tscn" id="5_cccm0"]
 [ext_resource type="PackedScene" uid="uid://hlnkxvygwtqj" path="res://player/player.tscn" id="6_npeig"]
 [ext_resource type="PackedScene" uid="uid://ipaun8yw70ur" path="res://goals/stash/stash.tscn" id="6_s878p"]
-[ext_resource type="PackedScene" uid="uid://dy0l31dfnurmj" path="res://explosion/big_explosion_animation.tscn" id="7_gqkpu"]
+[ext_resource type="PackedScene" uid="uid://dy0l31dfnurmj" path="res://explosion/big-explosion-animation.tscn" id="7_gqkpu"]
 [ext_resource type="PackedScene" uid="uid://byjq0wg1h6tsm" path="res://goals/fortress/fortress.tscn" id="9_vp1te"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6q3t"]

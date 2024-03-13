@@ -2,6 +2,7 @@ extends Node
 
 @export var _explosion_scene: PackedScene
 @export var _levels: Array[PackedScene]
+@export var _transition_scene: PackedScene
 
 @onready var _main = get_node("/root/Main")
 
@@ -38,13 +39,19 @@ func go_to_level(level: int) -> void:
 
 
 func reset_level() -> void:
-	go_to_level(_current_level)
+	_main.change_scene(
+		_transition_scene,
+		{to_level = _current_level},
+	)
 
 
 func next_level() -> void:
 	_current_level += 1
 	if _current_level <= _levels.size():
-		go_to_level(_current_level)
+		_main.change_scene(
+			_transition_scene,
+			{to_level = _current_level},
+		)
 
 
 func save_obtained_stash() -> void:
