@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cu41ve5x2uoag"
-path="res://.godot/imported/haxorville.ttf-1460642eeadf191480069c05716c8386.fontdata"
+uid="uid://c2x1quwgrr3sw"
+path="res://.godot/imported/Acme 7 Wide Xtnd.ttf-0906a7e8d6e86457326e3403594815b9.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/haxorville.ttf"
-dest_files=["res://.godot/imported/haxorville.ttf-1460642eeadf191480069c05716c8386.fontdata"]
+source_file="res://assets/fonts/Acme 7 Wide Xtnd.ttf"
+dest_files=["res://.godot/imported/Acme 7 Wide Xtnd.ttf-0906a7e8d6e86457326e3403594815b9.fontdata"]
 
 [params]
 

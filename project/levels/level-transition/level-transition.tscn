@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d383onb8oyear"]
 
 [ext_resource type="Script" path="res://levels/level-transition/level-transition.gd" id="1_6a4pe"]
-[ext_resource type="FontFile" uid="uid://cu41ve5x2uoag" path="res://assets/fonts/haxorville.ttf" id="1_b5ii7"]
+[ext_resource type="FontFile" uid="uid://c2x1quwgrr3sw" path="res://assets/fonts/Acme 7 Wide Xtnd.ttf" id="2_wqiwf"]
 
 [node name="LevelTransition" type="CanvasLayer"]
 script = ExtResource("1_6a4pe")
@@ -14,8 +14,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_b5ii7")
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("2_wqiwf")
+theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
