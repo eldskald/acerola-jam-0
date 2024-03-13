@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://goals/fortress/fortress.gd" id="1_3djnq"]
 [ext_resource type="Texture2D" uid="uid://c38555gl61np6" path="res://assets/textures/objectives.png" id="1_ue0lb"]
-[ext_resource type="PackedScene" uid="uid://dy0l31dfnurmj" path="res://explosion/big_explosion_animation.tscn" id="2_6hf5u"]
+[ext_resource type="PackedScene" uid="uid://dy0l31dfnurmj" path="res://explosion/big-explosion-animation.tscn" id="2_6hf5u"]
 [ext_resource type="Texture2D" uid="uid://p0yylvbigjgi" path="res://assets/textures/smoke-particles-1.png" id="3_jbrop"]
 [ext_resource type="Texture2D" uid="uid://dm68m6oo7tto2" path="res://assets/textures/smoke-particles-2.png" id="4_ut62p"]
 [ext_resource type="Texture2D" uid="uid://crfhnoirau7k5" path="res://assets/textures/smoke-particles-3.png" id="5_tqwo1"]

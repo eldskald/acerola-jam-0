@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://4f1upelpcf60"]
 
 [ext_resource type="Texture2D" uid="uid://cp4nqn0f2dppk" path="res://assets/textures/enemies.png" id="1_fg8wd"]
-[ext_resource type="Script" path="res://enemies/grounded/enemy_grounded.gd" id="1_qqggr"]
+[ext_resource type="Script" path="res://enemies/grounded/enemy-grounded.gd" id="1_qqggr"]
 
 [sub_resource type="Animation" id="Animation_xlrwu"]
 resource_name = "dead"
