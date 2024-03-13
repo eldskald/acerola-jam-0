@@ -4,11 +4,12 @@ extends CanvasLayer
 const MESSAGES := [
 	"If you're not getting hurt by your own bombs, you're not cooking them right.",
 	"Anger is fuel. It can do work or set your house on fire. Your choice.",
-	"Gnome alchemists try to make gold and cry when they get an explosion, they don't know what's actually valuable.",
+	"Gnome alchemists try to make gold and get mad when they get an explosion, they don't understand value.",
 	"Now they blew it!",
 	"There are many forms of power but if you have willpower, you can get all others.",
 	"Controlling your emotions isn't about bottling them up, it's about releasing them the right way.",
 	"The secret to cooking bombs is to put some love in it.",
+	"I'm the real bomb!",
 ]
 
 @onready var _label: Label = $Label

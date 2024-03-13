@@ -3,7 +3,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	Globals.go_to_level(1)
+	Globals.go_to_intro()
 
 
 func change_scene(scene: PackedScene, load_data: Dictionary = {}) -> void:

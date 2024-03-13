@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://57chex1qtvas"]
+
+[ext_resource type="FontFile" uid="uid://c2x1quwgrr3sw" path="res://assets/fonts/Acme 7 Wide Xtnd.ttf" id="1_glnbf"]
+[ext_resource type="Script" path="res://levels/intro/intro.gd" id="1_u03qj"]
+
+[sub_resource type="Animation" id="Animation_r0l84"]
+resource_name = "show_text"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 400]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8af7w"]
+_data = {
+"show_text": SubResource("Animation_r0l84")
+}
+
+[node name="Intro" type="CanvasLayer"]
+script = ExtResource("1_u03qj")
+
+[node name="GameTitle" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_glnbf")
+theme_override_font_sizes/font_size = 32
+text = "ANGER ISSUES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("1_glnbf")
+theme_override_font_sizes/font_size = 16
+text = "by Rafael Bordoni"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_glnbf")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8af7w")
+}
+
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="FirstTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="LastTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FirstTimer" to="." method="_on_first_timer_timeout"]
+[connection signal="timeout" from="LastTimer" to="." method="_on_last_timer_timeout"]

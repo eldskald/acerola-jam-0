@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dmjqdo2a3s2vq"]
+[gd_scene load_steps=17 format=3 uid="uid://dmjqdo2a3s2vq"]
 
 [ext_resource type="Script" path="res://globals/globals.gd" id="1_61u7e"]
 [ext_resource type="PackedScene" uid="uid://c0a5he5ikosgq" path="res://explosion/explosion.tscn" id="2_r68vw"]
 [ext_resource type="PackedScene" uid="uid://bkauum4q1lmml" path="res://levels/level-01.tscn" id="3_bn0fs"]
 [ext_resource type="PackedScene" uid="uid://djuoffyay1pxx" path="res://levels/level-02.tscn" id="4_llu4g"]
 [ext_resource type="PackedScene" uid="uid://d383onb8oyear" path="res://levels/level-transition/level-transition.tscn" id="5_1p1lx"]
+[ext_resource type="PackedScene" uid="uid://57chex1qtvas" path="res://levels/intro/intro.tscn" id="6_nf52f"]
 [ext_resource type="AudioStream" uid="uid://f2l6i8qfv2ld" path="res://assets/sfx/explosion-1.wav" id="6_ov745"]
 [ext_resource type="AudioStream" uid="uid://cmykwfsdjtlsr" path="res://assets/sfx/explosion-2.wav" id="7_61053"]
 [ext_resource type="AudioStream" uid="uid://bqvj7bharukar" path="res://assets/sfx/explosion-3.wav" id="8_yr2rn"]
@@ -21,6 +22,7 @@ script = ExtResource("1_61u7e")
 _explosion_scene = ExtResource("2_r68vw")
 _levels = Array[PackedScene]([ExtResource("3_bn0fs"), ExtResource("4_llu4g")])
 _transition_scene = ExtResource("5_1p1lx")
+_intro = ExtResource("6_nf52f")
 
 [node name="Explosion1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ov745")

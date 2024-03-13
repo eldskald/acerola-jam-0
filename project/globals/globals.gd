@@ -3,6 +3,7 @@ extends Node
 @export var _explosion_scene: PackedScene
 @export var _levels: Array[PackedScene]
 @export var _transition_scene: PackedScene
+@export var _intro: PackedScene
 
 @onready var _main = get_node("/root/Main")
 @onready var _select_sound: AudioStreamPlayer = $Select
@@ -66,6 +67,10 @@ func play_explosion_sound(id: int) -> void:
 
 func play_select_sound() -> void:
 	_select_sound.play()
+
+
+func go_to_intro() -> void:
+	_main.change_scene(_intro)
 
 
 func go_to_level(level: int) -> void:
