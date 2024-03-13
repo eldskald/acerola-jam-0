@@ -16,7 +16,7 @@ particles_anim_loop = false
 _data = [Vector2(0, 0.505494), 0.0, 0.494506, 0, 1, Vector2(1, 1), 0.494506, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_nyok1"]
+[sub_resource type="CurveTexture" id="CurveTexture_1tt6q"]
 curve = SubResource("Curve_tc1at")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a1adj"]
@@ -28,7 +28,7 @@ spread = 0.0
 initial_velocity_min = 10.0
 initial_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
-anim_offset_curve = SubResource("CurveTexture_nyok1")
+anim_offset_curve = SubResource("CurveTexture_1tt6q")
 turbulence_noise_speed = Vector3(1, 0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gnj44"]
@@ -132,7 +132,7 @@ _data = {
 
 [node name="Explosion" type="Area2D"]
 collision_layer = 0
-collision_mask = 13
+collision_mask = 77
 script = ExtResource("1_7xp12")
 
 [node name="Particles1" type="GPUParticles2D" parent="."]

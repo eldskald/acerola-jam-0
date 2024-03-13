@@ -3,7 +3,7 @@ extends Node
 @export var _explosion_scene: PackedScene
 @export var _levels: Array[PackedScene]
 
-@onready var _main: Main = get_node("/root/Main")
+@onready var _main = get_node("/root/Main")
 
 var _current_level: int = 0
 var _stashes: Array[bool] = []
@@ -29,21 +29,23 @@ func spawn_explosion_at(point: Vector2):
 	return explosion
 
 
-func reset_level() -> void:
+func go_to_level(level: int) -> void:
+	_current_level = level
 	_main.change_scene(
-		_levels[_current_level],
-		{stash = _stashes[_current_level]},
+		_levels[level - 1],
+		{stash = _stashes[level - 1]},
 	)
+
+
+func reset_level() -> void:
+	go_to_level(_current_level)
 
 
 func next_level() -> void:
 	_current_level += 1
-	if _current_level < _levels.size():
-		_main.change_scene(
-			_levels[_current_level],
-			{stashes = _stashes[_current_level]},
-		)
+	if _current_level <= _levels.size():
+		go_to_level(_current_level)
 
 
 func save_obtained_stash() -> void:
-	_stashes[_current_level] = true
+	_stashes[_current_level - 1] = true

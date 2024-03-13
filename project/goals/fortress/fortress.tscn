@@ -1,0 +1,250 @@
+[gd_scene load_steps=22 format=3 uid="uid://byjq0wg1h6tsm"]
+
+[ext_resource type="Script" path="res://goals/fortress/fortress.gd" id="1_3djnq"]
+[ext_resource type="Texture2D" uid="uid://c38555gl61np6" path="res://assets/textures/objectives.png" id="1_ue0lb"]
+[ext_resource type="PackedScene" uid="uid://dy0l31dfnurmj" path="res://explosion/big_explosion_animation.tscn" id="2_6hf5u"]
+[ext_resource type="Texture2D" uid="uid://p0yylvbigjgi" path="res://assets/textures/smoke-particles-1.png" id="3_jbrop"]
+[ext_resource type="Texture2D" uid="uid://dm68m6oo7tto2" path="res://assets/textures/smoke-particles-2.png" id="4_ut62p"]
+[ext_resource type="Texture2D" uid="uid://crfhnoirau7k5" path="res://assets/textures/smoke-particles-3.png" id="5_tqwo1"]
+[ext_resource type="Texture2D" uid="uid://0jgjp6ky6n2i" path="res://assets/textures/brick-particles.png" id="7_2q4da"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uiu20"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 6
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eek38"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(16, 8, 1)
+gravity = Vector3(0, -50, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p0l6"]
+size = Vector2(49, 51)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ukeir"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t10ub"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="Curve" id="Curve_t46wg"]
+_data = [Vector2(0, 0.274725), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_8flmi"]
+curve = SubResource("Curve_t46wg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5nyne"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 98, 0)
+anim_offset_curve = SubResource("CurveTexture_8flmi")
+
+[sub_resource type="Curve" id="Curve_okp2s"]
+_data = [Vector2(0, 0.516483), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_kbitb"]
+curve = SubResource("Curve_okp2s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pm8p1"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 98, 0)
+anim_offset_curve = SubResource("CurveTexture_kbitb")
+
+[sub_resource type="Curve" id="Curve_gyq0s"]
+_data = [Vector2(0, 0.824176), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_x7fx8"]
+curve = SubResource("Curve_gyq0s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_75l08"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 98, 0)
+anim_offset_curve = SubResource("CurveTexture_x7fx8")
+
+[node name="Fortress" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_3djnq")
+
+[node name="Whole" type="Sprite2D" parent="."]
+texture = ExtResource("1_ue0lb")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="Destroyed" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 16)
+texture = ExtResource("1_ue0lb")
+region_enabled = true
+region_rect = Rect2(64, 32, 64, 32)
+
+[node name="Particles1" type="GPUParticles2D" parent="Destroyed"]
+modulate = Color(0.121569, 0.12549, 0.254902, 1)
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_uiu20")
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_eek38")
+texture = ExtResource("3_jbrop")
+fixed_fps = 60
+
+[node name="Particles2" type="GPUParticles2D" parent="Destroyed"]
+modulate = Color(0.121569, 0.12549, 0.254902, 1)
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_uiu20")
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_eek38")
+texture = ExtResource("4_ut62p")
+fixed_fps = 60
+
+[node name="Particles3" type="GPUParticles2D" parent="Destroyed"]
+modulate = Color(0.121569, 0.12549, 0.254902, 1)
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_uiu20")
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_eek38")
+texture = ExtResource("5_tqwo1")
+fixed_fps = 60
+
+[node name="BigExplosionAnimation" parent="." instance=ExtResource("2_6hf5u")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 6.5)
+shape = SubResource("RectangleShape2D_4p0l6")
+
+[node name="Particles1Hit1" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_t10ub")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Particles2Hit1" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_5nyne")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Particles3Hit1" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_pm8p1")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Particles4Hit1" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_75l08")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Particles1Hit2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_t10ub")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Particles2Hit2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_5nyne")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Particles3Hit2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_pm8p1")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Particles4Hit2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_75l08")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Particles1Hit3" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_t10ub")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Particles2Hit3" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_5nyne")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Particles3Hit3" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_pm8p1")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Particles4Hit3" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ukeir")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_75l08")
+texture = ExtResource("7_2q4da")
+one_shot = true
+explosiveness = 1.0

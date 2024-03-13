@@ -1,10 +1,10 @@
 class_name Stash
 extends TileMap
 
-signal stash_obtained
+signal stash_destroyed
 
 
-func _explode(explosion: Explosion) -> void:
+func _explode(_explosion: Explosion) -> void:
 	Globals.save_obtained_stash()
-	stash_obtained.emit()
+	stash_destroyed.emit()
 	queue_free()

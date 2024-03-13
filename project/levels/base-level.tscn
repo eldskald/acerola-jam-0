@@ -1,34 +1,91 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcswny36jmbk3"]
+[gd_scene load_steps=12 format=3 uid="uid://dcswny36jmbk3"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_ay1xb"]
 [ext_resource type="PackedScene" uid="uid://dq2wv2ouvx8vb" path="res://tilesets/background.tscn" id="2_ihsxt"]
+[ext_resource type="FontFile" uid="uid://cu41ve5x2uoag" path="res://assets/fonts/haxorville.ttf" id="2_mbg0k"]
 [ext_resource type="PackedScene" uid="uid://b2ums55ohaj2y" path="res://tilesets/platforms.tscn" id="3_35i6h"]
 [ext_resource type="PackedScene" uid="uid://crk5edixx2n5b" path="res://tilesets/spikes.tscn" id="4_sdnk4"]
 [ext_resource type="PackedScene" uid="uid://euxpp4w11b5b" path="res://tilesets/walls.tscn" id="5_cccm0"]
 [ext_resource type="PackedScene" uid="uid://hlnkxvygwtqj" path="res://player/player.tscn" id="6_npeig"]
 [ext_resource type="PackedScene" uid="uid://ipaun8yw70ur" path="res://goals/stash/stash.tscn" id="6_s878p"]
+[ext_resource type="PackedScene" uid="uid://dy0l31dfnurmj" path="res://explosion/big_explosion_animation.tscn" id="7_gqkpu"]
+[ext_resource type="PackedScene" uid="uid://byjq0wg1h6tsm" path="res://goals/fortress/fortress.tscn" id="9_vp1te"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6q3t"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1_ay1xb")
 
+[node name="LevelCompleteTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
+[node name="PlayerDiedTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.15
+anchor_right = 0.5
+anchor_bottom = 0.15
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_mbg0k")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_u6q3t")
+
+[node name="MessageLifetime" type="Timer" parent="CanvasLayer/MessageLabel"]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
 limit_top = 0
-limit_right = 1024
-limit_bottom = 288
+limit_right = 1280
+limit_bottom = 360
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 editor_draw_limits = true
 
 [node name="Background" parent="." instance=ExtResource("2_ihsxt")]
+position = Vector2(0, 4)
 
 [node name="Platforms" parent="." instance=ExtResource("3_35i6h")]
+position = Vector2(0, 4)
 
 [node name="Spikes" parent="." instance=ExtResource("4_sdnk4")]
+position = Vector2(0, 4)
 
 [node name="Walls" parent="." instance=ExtResource("5_cccm0")]
+position = Vector2(0, 4)
 
 [node name="Stash" parent="." instance=ExtResource("6_s878p")]
+position = Vector2(0, 4)
+
+[node name="StashExplosion" parent="." instance=ExtResource("7_gqkpu")]
+position = Vector2(117, 96)
+
+[node name="Fortress" parent="." instance=ExtResource("9_vp1te")]
+position = Vector2(176, 98)
 
 [node name="Player" parent="." instance=ExtResource("6_npeig")]
 position = Vector2(71, 107)
+
+[connection signal="timeout" from="LevelCompleteTimer" to="." method="_on_level_complete_timer_timeout"]
+[connection signal="timeout" from="PlayerDiedTimer" to="." method="_on_player_died_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/MessageLabel/MessageLifetime" to="." method="_on_message_lifetime_timeout"]
+[connection signal="stash_destroyed" from="Stash" to="." method="_on_stash_destroyed"]
+[connection signal="fortress_destroyed" from="Fortress" to="." method="_on_fortress_destroyed"]
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]

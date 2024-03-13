@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 signal state_changed(new_state: State)
+signal player_died
 
 enum State { STANDING, MOVING, AIRBORNE, EXPLODED, DEAD }
 
@@ -13,6 +14,7 @@ enum State { STANDING, MOVING, AIRBORNE, EXPLODED, DEAD }
 @export var air_friction: float
 @export var gravity: float
 @export var fall_speed: float
+@export var death_float_speed: Vector2
 
 @export_category("Explosion Movement")
 @export var vertical_launch: Vector2
@@ -29,6 +31,7 @@ enum State { STANDING, MOVING, AIRBORNE, EXPLODED, DEAD }
 @export var grenade_throw_speed_forward: Vector2
 @export var grenade_throw_speed_down: Vector2
 
+@onready var _spike_detector: Area2D = $SpikeDetector
 @onready var _bomb_throw_cooldown_timer: Timer = $BombThrowCooldown
 @onready var _explosion_immunity_timer: Timer = $ExplosionImmunityTimer
 @onready var _platform_drop_timer: Timer = $PlatformDropTimer
@@ -38,8 +41,11 @@ var _state: State = State.STANDING
 
 
 func _physics_process(delta) -> void:
-	_move(delta)
-	_throw_bombs()
+	if _state != State.DEAD:
+		_move(delta)
+		_throw_bombs()
+	else:
+		move_and_slide()
 
 
 func get_facing() -> float:
@@ -51,7 +57,14 @@ func get_state() -> State:
 
 
 func kill() -> void:
-	print("you died")
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(2, false)
+	set_collision_mask_value(5, false)
+	_spike_detector.set_deferred("monitoring", false)
+	_set_state(State.DEAD)
+	velocity = death_float_speed
+	Globals.spawn_explosion_at(position)
+	player_died.emit()
 
 
 func _set_state(new_state: State) -> void:
@@ -131,7 +144,7 @@ func _throw_bombs():
 
 
 func _explode(explosion: Explosion) -> void:
-	if not _explosion_immunity_timer.is_stopped():
+	if not _explosion_immunity_timer.is_stopped() or _state == State.DEAD:
 		return
 	if abs(explosion.position.x - position.x) < launch_dir_pos_x_treshold:
 		velocity = vertical_launch
