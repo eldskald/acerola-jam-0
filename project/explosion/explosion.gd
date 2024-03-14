@@ -3,6 +3,8 @@ extends Area2D
 
 @onready var _anim: AnimationPlayer = $AnimationPlayer
 
+var launch_up: bool = false
+
 
 func _ready() -> void:
 	_anim.play("explosion")

@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var _sprite: Sprite2D = $Sprite2D
 @onready var _anim: AnimationPlayer = $AnimationPlayer
 
+var launch_up: bool = false
+
 var _bounces: int = 0
 
 
@@ -69,5 +71,5 @@ func _physics_process(delta: float) -> void:
 
 
 func _explode(_explosion: Explosion) -> void:
-	Globals.spawn_explosion_at(position)
+	Globals.spawn_explosion_at(position, launch_up)
 	queue_free()

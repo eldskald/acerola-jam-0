@@ -36,8 +36,9 @@ func get_player() -> Node:
 	return get_tree().get_nodes_in_group("player")[0]
 
 
-func spawn_explosion_at(point: Vector2) -> Node:
+func spawn_explosion_at(point: Vector2, launch_up: bool) -> Node:
 	var explosion = _explosion_scene.instantiate()
+	explosion.launch_up = launch_up
 	explosion.position = point
 	get_level().call_deferred("add_child", explosion)
 	play_explosion_sound(randi() % _explosion_sounds.size())

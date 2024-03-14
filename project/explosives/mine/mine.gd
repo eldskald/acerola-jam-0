@@ -43,5 +43,5 @@ func _physics_process(delta: float) -> void:
 
 
 func _explode(_explosion: Explosion) -> void:
-	Globals.spawn_explosion_at(position)
+	Globals.spawn_explosion_at(position, true)
 	queue_free()

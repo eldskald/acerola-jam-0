@@ -63,7 +63,7 @@ func kill() -> void:
 	_spike_detector.set_deferred("monitoring", false)
 	_set_state(State.DEAD)
 	velocity = death_float_speed
-	Globals.spawn_explosion_at(position)
+	Globals.spawn_explosion_at(position, false)
 	player_died.emit()
 
 
@@ -136,6 +136,7 @@ func _throw_bombs():
 		grenade.position = position
 		if Input.is_action_pressed("look_down") and not is_on_floor():
 			grenade.velocity = grenade_throw_speed_down
+			grenade.launch_up = true
 		else:
 			grenade.position += _facing * launch_offset
 			grenade.velocity.x = grenade_throw_speed_forward.x * _facing
@@ -150,7 +151,7 @@ func _throw_bombs():
 func _explode(explosion: Explosion) -> void:
 	if not _explosion_immunity_timer.is_stopped() or _state == State.DEAD:
 		return
-	if abs(explosion.position.x - position.x) < launch_dir_pos_x_treshold:
+	if explosion.launch_up:
 		velocity = vertical_launch
 	else:
 		if explosion.position.x - position.x <= 0.1:
