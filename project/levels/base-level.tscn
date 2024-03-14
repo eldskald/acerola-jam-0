@@ -65,10 +65,10 @@ position = Vector2(0, 4)
 [node name="Platforms" parent="." instance=ExtResource("3_35i6h")]
 position = Vector2(0, 4)
 
-[node name="Spikes" parent="." instance=ExtResource("4_sdnk4")]
+[node name="Walls" parent="." instance=ExtResource("5_cccm0")]
 position = Vector2(0, 4)
 
-[node name="Walls" parent="." instance=ExtResource("5_cccm0")]
+[node name="Spikes" parent="." instance=ExtResource("4_sdnk4")]
 position = Vector2(0, 4)
 
 [node name="Stash" parent="." instance=ExtResource("6_s878p")]
