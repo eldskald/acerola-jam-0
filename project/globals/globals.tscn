@@ -69,6 +69,8 @@ one_shot = true
 
 [node name="IntroOutroMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_xolea")
+volume_db = -6.0
 
 [node name="ActionMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_wc3l7")
+volume_db = -10.0

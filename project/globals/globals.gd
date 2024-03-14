@@ -125,3 +125,14 @@ func next_level() -> void:
 
 func save_obtained_stash() -> void:
 	_stashes[_current_level - 1] = true
+
+
+func get_obtained_stashes() -> int:
+	var obtained: int = 0
+	for stash in _stashes:
+		obtained += 1 if stash else 0
+	return obtained
+
+
+func get_total_stashes() -> int:
+	return _stashes.size()
