@@ -25,6 +25,10 @@ func _ready():
 
 
 func _physics_process(delta):
+	if position.y >= 400:
+		queue_free()
+		return
+	
 	if not _is_dead:
 		if (
 			(is_on_wall() and get_wall_normal().x * velocity.x <= 0.0)

@@ -15,6 +15,10 @@ func _ready():
 	_anim.play("roll")
 
 func _physics_process(delta: float) -> void:
+	if position.y >= 400:
+		queue_free()
+		return
+	
 	if abs(velocity.x) <= 0.1:
 		_sprite.flip_h = false
 		_anim.speed_scale = 1.0

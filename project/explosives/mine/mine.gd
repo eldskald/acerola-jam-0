@@ -15,6 +15,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if position.y >= 400:
+		queue_free()
+		return
 	
 	# Check for explosion
 	if is_on_floor():

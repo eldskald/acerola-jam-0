@@ -74,9 +74,11 @@ func _set_state(new_state: State) -> void:
 
 
 func _move(delta) -> void:
-	var dir_input = _get_input_dir()
+	if position.y >= 400:
+		kill()
+		return
 	
-	# Update facing
+	var dir_input = _get_input_dir()
 	if dir_input != 0.0:
 		_facing = dir_input
 	

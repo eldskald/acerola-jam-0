@@ -22,6 +22,10 @@ func _ready():
 
 
 func _physics_process(delta):
+	if position.y >= 400:
+		queue_free()
+		return
+	
 	if not _is_dead:
 		
 		# Update position and velocity to make it move up and down in a senoid.
