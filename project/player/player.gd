@@ -35,6 +35,7 @@ enum State { STANDING, MOVING, AIRBORNE, EXPLODED, DEAD }
 @onready var _bomb_throw_cooldown_timer: Timer = $BombThrowCooldown
 @onready var _explosion_immunity_timer: Timer = $ExplosionImmunityTimer
 @onready var _platform_drop_timer: Timer = $PlatformDropTimer
+@onready var _wall_detector: Area2D = $"%WallDetector"
 
 var _facing: float = 1.0
 var _state: State = State.STANDING
@@ -137,11 +138,18 @@ func _throw_bombs():
 		if Input.is_action_pressed("look_down") and not is_on_floor():
 			grenade.velocity = grenade_throw_speed_down
 			grenade.launch_up = true
+			Globals.get_level().add_child(grenade)
 		else:
-			grenade.position += _facing * launch_offset
-			grenade.velocity.x = grenade_throw_speed_forward.x * _facing
-			grenade.velocity.y = grenade_throw_speed_forward.y
-		Globals.get_level().add_child(grenade)
+			if _wall_detector.get_overlapping_bodies().is_empty():
+				grenade.position += _facing * launch_offset
+				grenade.velocity.x = grenade_throw_speed_forward.x * _facing
+				grenade.velocity.y = grenade_throw_speed_forward.y
+				Globals.get_level().add_child(grenade)
+			else:
+				var explosion = Globals.spawn_explosion_at(
+					position + _facing * launch_offset, false
+				)
+				_explode(explosion)
 		_bomb_throw_cooldown_timer.start(bomb_throw_cooldown)
 		if _state == State.EXPLODED:
 			_set_state(State.AIRBORNE)

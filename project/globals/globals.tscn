@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dmjqdo2a3s2vq"]
+[gd_scene load_steps=25 format=3 uid="uid://dmjqdo2a3s2vq"]
 
 [ext_resource type="Script" path="res://globals/globals.gd" id="1_61u7e"]
 [ext_resource type="PackedScene" uid="uid://c0a5he5ikosgq" path="res://explosion/explosion.tscn" id="2_r68vw"]
@@ -12,8 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://cmykwfsdjtlsr" path="res://assets/sfx/explosion-2.wav" id="7_61053"]
 [ext_resource type="PackedScene" uid="uid://8qaygduumbjp" path="res://levels/level-05.tscn" id="7_epfgm"]
 [ext_resource type="PackedScene" uid="uid://b63vwaari7f8v" path="res://levels/outro/outro.tscn" id="7_x2fe6"]
+[ext_resource type="PackedScene" uid="uid://jn5nuqy6y7o2" path="res://levels/level-06.tscn" id="8_e3e2d"]
 [ext_resource type="AudioStream" uid="uid://bqvj7bharukar" path="res://assets/sfx/explosion-3.wav" id="8_yr2rn"]
 [ext_resource type="AudioStream" uid="uid://b7ux317t1561y" path="res://assets/sfx/explosion-4.wav" id="9_2o3w2"]
+[ext_resource type="PackedScene" uid="uid://bwx7h10kg7jd1" path="res://levels/level-07.tscn" id="9_o6pw8"]
 [ext_resource type="AudioStream" uid="uid://dg5nhx6uxgjff" path="res://assets/sfx/select.wav" id="10_qslrl"]
 [ext_resource type="AudioStream" uid="uid://bxfj6vudvkgmk" path="res://assets/sfx/bounce.wav" id="11_bqqae"]
 [ext_resource type="AudioStream" uid="uid://bud3u3s8fvfd7" path="res://assets/sfx/throw-1.wav" id="11_c52ev"]
@@ -26,7 +28,7 @@
 [node name="Globals" type="Node"]
 script = ExtResource("1_61u7e")
 _explosion_scene = ExtResource("2_r68vw")
-_levels = Array[PackedScene]([ExtResource("3_bn0fs"), ExtResource("4_llu4g"), ExtResource("5_5u2yv"), ExtResource("6_mn8sa"), ExtResource("7_epfgm")])
+_levels = Array[PackedScene]([ExtResource("3_bn0fs"), ExtResource("4_llu4g"), ExtResource("5_5u2yv"), ExtResource("6_mn8sa"), ExtResource("7_epfgm"), ExtResource("8_e3e2d"), ExtResource("9_o6pw8")])
 _transition_scene = ExtResource("5_1p1lx")
 _intro = ExtResource("6_nf52f")
 _outro = ExtResource("7_x2fe6")

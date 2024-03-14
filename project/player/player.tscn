@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://hlnkxvygwtqj"]
+[gd_scene load_steps=20 format=3 uid="uid://hlnkxvygwtqj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_c02i2"]
 [ext_resource type="PackedScene" uid="uid://bx8upr0j8d6h3" path="res://explosives/mine/mine.tscn" id="2_6hytv"]
@@ -252,6 +252,9 @@ _data = {
 "standing": SubResource("Animation_6xvri")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6dhe"]
+size = Vector2(10, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jpgk"]
 size = Vector2(16, 22)
 
@@ -269,14 +272,14 @@ death_float_speed = Vector2(0, -50)
 vertical_launch = Vector2(0, -400)
 forward_launch = Vector2(300, -300)
 launch_dir_pos_x_treshold = 6.0
-explosion_immunity_time = 0.5
+explosion_immunity_time = 0.1
 mine_scene = ExtResource("2_6hytv")
 grenade_scene = ExtResource("3_03kvf")
 bomb_throw_cooldown = 0.5
 launch_offset = Vector2(16, 0)
 mine_throw_speed = Vector2(120, -120)
 grenade_throw_speed_forward = Vector2(225, -225)
-grenade_throw_speed_down = Vector2(0, 225)
+grenade_throw_speed_down = Vector2(0, 300)
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("4_uosth")
@@ -365,6 +368,16 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_k4ipt")
 }
+
+[node name="WallDetector" type="Area2D" parent="PlayerSprite"]
+unique_name_in_owner = true
+position = Vector2(13, 0)
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSprite/WallDetector"]
+shape = SubResource("RectangleShape2D_w6dhe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
