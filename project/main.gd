@@ -3,6 +3,7 @@ extends Node2D
 
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	Globals.go_to_intro()
 
 
