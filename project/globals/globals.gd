@@ -16,6 +16,8 @@ extends Node
 	$Throw1, $Throw2, $Throw3, $Throw4
 ]
 @onready var _explosion_time_cooldown: Timer = $ExplosionTimeCooldown
+@onready var _intro_outro_bgm: AudioStreamPlayer = $IntroOutroMusic
+@onready var _action_bgm: AudioStreamPlayer = $ActionMusic
 
 var _current_level: int = 0
 var _stashes: Array[bool] = []
@@ -70,6 +72,21 @@ func play_select_sound() -> void:
 	_select_sound.play()
 
 
+func play_intro_outro_music() -> void:
+	_action_bgm.stop()
+	_intro_outro_bgm.play()
+
+
+func play_action_music() -> void:
+	_intro_outro_bgm.stop()
+	_action_bgm.play()
+
+
+func stop_music() -> void:
+	_action_bgm.stop()
+	_intro_outro_bgm.stop()
+
+
 func go_to_intro() -> void:
 	_main.change_scene(_intro)
 
@@ -102,6 +119,7 @@ func next_level() -> void:
 		)
 	else:
 		go_to_outro()
+		play_intro_outro_music()
 
 
 func save_obtained_stash() -> void:

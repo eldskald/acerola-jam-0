@@ -53,6 +53,7 @@ func _physics_process(_delta):
 				_first_timer.start()
 			6:
 				Globals.play_explosion_sound(0)
+				Globals.stop_music()
 				_label.hide()
 				_last_timer.start()
 			_:
@@ -65,6 +66,7 @@ func _physics_process(_delta):
 
 
 func _on_first_timer_timeout():
+	Globals.play_intro_outro_music()
 	_label.text = MESSAGE_1
 	_anim.stop()
 	_anim.play("show_text")
@@ -74,3 +76,4 @@ func _on_first_timer_timeout():
 
 func _on_last_timer_timeout():
 	Globals.go_to_level(1)
+	Globals.play_action_music()

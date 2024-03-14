@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmjqdo2a3s2vq"]
+[gd_scene load_steps=20 format=3 uid="uid://dmjqdo2a3s2vq"]
 
 [ext_resource type="Script" path="res://globals/globals.gd" id="1_61u7e"]
 [ext_resource type="PackedScene" uid="uid://c0a5he5ikosgq" path="res://explosion/explosion.tscn" id="2_r68vw"]
@@ -17,6 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://d3o25fdojpafc" path="res://assets/sfx/throw-2.wav" id="12_hgy20"]
 [ext_resource type="AudioStream" uid="uid://dpjtwh17d7yle" path="res://assets/sfx/throw-3.wav" id="13_okh2h"]
 [ext_resource type="AudioStream" uid="uid://clf8gy00q2msu" path="res://assets/sfx/throw-4.wav" id="14_j5va6"]
+[ext_resource type="AudioStream" uid="uid://xiierp4eq4ui" path="res://assets/bgm/intro-outro.ogg" id="18_xolea"]
+[ext_resource type="AudioStream" uid="uid://22e57x1dua47" path="res://assets/bgm/action.ogg" id="19_wc3l7"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_61u7e")
@@ -69,3 +71,11 @@ bus = &"SFX"
 [node name="ExplosionTimeCooldown" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
+
+[node name="IntroOutroMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_xolea")
+bus = &"Music"
+
+[node name="ActionMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_wc3l7")
+bus = &"Music"
