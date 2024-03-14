@@ -1,3 +1,4 @@
 # Godot 4+ specific ignores
 project/.godot/
 project/export_presets.cfg
+build
