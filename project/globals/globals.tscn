@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dmjqdo2a3s2vq"]
+[gd_scene load_steps=22 format=3 uid="uid://dmjqdo2a3s2vq"]
 
 [ext_resource type="Script" path="res://globals/globals.gd" id="1_61u7e"]
 [ext_resource type="PackedScene" uid="uid://c0a5he5ikosgq" path="res://explosion/explosion.tscn" id="2_r68vw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djuoffyay1pxx" path="res://levels/level-02.tscn" id="4_llu4g"]
 [ext_resource type="PackedScene" uid="uid://d383onb8oyear" path="res://levels/level-transition/level-transition.tscn" id="5_1p1lx"]
 [ext_resource type="PackedScene" uid="uid://b3fp1p1dtmxvg" path="res://levels/level-03.tscn" id="5_5u2yv"]
+[ext_resource type="PackedScene" uid="uid://dvous1pbk38vx" path="res://levels/level-04.tscn" id="6_mn8sa"]
 [ext_resource type="PackedScene" uid="uid://57chex1qtvas" path="res://levels/intro/intro.tscn" id="6_nf52f"]
 [ext_resource type="AudioStream" uid="uid://f2l6i8qfv2ld" path="res://assets/sfx/explosion-1.wav" id="6_ov745"]
 [ext_resource type="AudioStream" uid="uid://cmykwfsdjtlsr" path="res://assets/sfx/explosion-2.wav" id="7_61053"]
@@ -24,50 +25,40 @@
 [node name="Globals" type="Node"]
 script = ExtResource("1_61u7e")
 _explosion_scene = ExtResource("2_r68vw")
-_levels = Array[PackedScene]([ExtResource("3_bn0fs"), ExtResource("4_llu4g"), ExtResource("5_5u2yv")])
+_levels = Array[PackedScene]([ExtResource("3_bn0fs"), ExtResource("4_llu4g"), ExtResource("5_5u2yv"), ExtResource("6_mn8sa")])
 _transition_scene = ExtResource("5_1p1lx")
 _intro = ExtResource("6_nf52f")
 _outro = ExtResource("7_x2fe6")
 
 [node name="Explosion1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ov745")
-bus = &"SFX"
 
 [node name="Explosion2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_61053")
-bus = &"SFX"
 
 [node name="Explosion3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_yr2rn")
-bus = &"SFX"
 
 [node name="Explosion4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_2o3w2")
-bus = &"SFX"
 
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_qslrl")
-bus = &"SFX"
 
 [node name="Bounce" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_bqqae")
-bus = &"SFX"
 
 [node name="Throw1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_c52ev")
-bus = &"SFX"
 
 [node name="Throw2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_hgy20")
-bus = &"SFX"
 
 [node name="Throw3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_okh2h")
-bus = &"SFX"
 
 [node name="Throw4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_j5va6")
-bus = &"SFX"
 
 [node name="ExplosionTimeCooldown" type="Timer" parent="."]
 wait_time = 0.4
@@ -75,8 +66,6 @@ one_shot = true
 
 [node name="IntroOutroMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_xolea")
-bus = &"Music"
 
 [node name="ActionMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_wc3l7")
-bus = &"Music"
