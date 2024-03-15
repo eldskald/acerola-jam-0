@@ -1,8 +1,16 @@
+![](images/ss1.png)
+
 # Anger Issues
 
-Game submission for the Acerola Jam 0 game jam.
+Game submission for the [Acerola Jam 0](https://itch.io/jam/acerola-jam-0) game jam. It's a platformer without a jump! The theme of the game jam was __aberration__, and I thought a platformer with no jump is an aberration in of itself. You can download the game on its [itch.io page](https://eldskald.itch.io/anger-issues).
 
-WIP
+![](images/ss2.png)
+
+![](images/ss6.png)
+
+It's a game about a very angry goblin chucking bombs and exploding everything, including himself!
+
+It was built with Godot 4.2.1, so if you want to download and build a version exactly like these ones, just download it and export the project from the engine.
 
 ## Credits
 
@@ -12,4 +20,4 @@ The music is by [Juhani Junkala](https://www.youtube.com/watch?v=dbACpSy9FWY), a
 
 ## License
 
-The source code is licensed under MIT, the art and music is CC0 while the font is CC-BY-ND-2.5. More details on license files.
+The source code is licensed under [MIT](https://opensource.org/license/MIT), the art and music is [CC0](https://creativecommons.org/public-domain/cc0/) while the font is [CC BY-ND 2.5](https://creativecommons.org/licenses/by-nd/2.5/). More details on license files.
